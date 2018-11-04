@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Model\Inventory;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
 
 class InventoryController extends Controller
 {
@@ -43,9 +45,18 @@ class InventoryController extends Controller
     public function store(Request $request)
     {
         //
-        $inventories = Inventory::create($request->all());
-        // return view('crop.index');
+         $fileName = 'null';
+        if (Input::file('product_image')->isValid()){
+            $fileName=Storage::disk('uploads')->put('/inventory',Input::file('product_image'));
+        }
+       
+        $arr=$request->all();
+        $arr['product_image']  = $fileName;
+        $inventories = Inventory::create($arr);
+        
+        if( $inventories){
         return redirect()->route('inventory.index');
+        }
     }
 
     /**

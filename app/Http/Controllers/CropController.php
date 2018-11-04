@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Model\Crop;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
 
 class CropController extends Controller
 {
@@ -30,8 +32,7 @@ class CropController extends Controller
      */
     public function create()
     {
-        //
-        $a=1;
+        
         $crops= Crop::all();
 
          return View('crop_management.index',compact('crops')) ;
@@ -46,9 +47,21 @@ class CropController extends Controller
     public function store(Request $request)
     {
         //
-        $crops = Crop::create($request->all());
-        // return view('crop.index');
-        return redirect()->route('crops.index');
+
+        $fileName = 'null';
+        if (Input::file('crop_image')->isValid()){
+            $fileName=Storage::disk('uploads')->put('/crop',Input::file('crop_image'));
+        }
+       
+        $arr=$request->all();
+        $arr['crop_image']  = $fileName;
+        $crops = Crop::create($arr);
+        
+        if($crops){
+          
+            return redirect()->route('crops.index');
+        }
+        
     }
 
     /**
@@ -114,7 +127,7 @@ class CropController extends Controller
     public function search(Request $request)   
 {
           // Gets the query string from our form submission 
-          $a=0;
+         
           $query = $request->search;
 
           // Returns an array of articles that have the query string located somewhere within 

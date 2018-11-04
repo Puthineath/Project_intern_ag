@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     /*
@@ -25,8 +25,20 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
 
+
+     // public function authenticate(Request $request)
+    
+     //    {
+
+     //            if(Auth::user()->roles=="Customer"){
+     //            return redirect()->route('Crops.index');
+     //            }
+     //        else if(Auth::user()->roles=="Admin"){
+     //             return redirect()->route('home_page');
+     //             }   
+     //    }
+     protected $redirectTo='/layouts/home_page';
     /**
      * Create a new controller instance.
      *

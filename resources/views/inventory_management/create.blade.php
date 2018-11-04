@@ -8,7 +8,7 @@
 
                  <div class="modal-body">
     
-                    {!! Form::open(array('url' => 'inventory')) !!}
+                    {!! Form::open(array('url' => 'inventory','enctype'=>'multipart/form-data')) !!}
                     
 
                     <div class="form-group">
@@ -41,8 +41,9 @@
                         {!! Form::text('description',null,array('placeholder' => 'Description','class' => 'form-control')) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('product_image', ' Product Image') !!}
-                        {!! Form::text('product_image',null,array('placeholder' => 'Insert Image','class' => 'form-control')) !!}
+                         {!! Form::label ('product_image','Product Image')!!}
+                        {!! Form::file('product_image', null,array('class' => 'form-control')) !!}
+                     
                     </div>
                 </div>
 

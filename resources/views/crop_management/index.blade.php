@@ -47,7 +47,8 @@
                             <td>{{ $value->started_date }}</td>
                             <td>{{ $value->end_date }}</td>
                             <td>{{ $value->description }}</td>
-                            <td>{{ $value->crop_image }}</td>
+                            <td>
+                            <img src="{{ asset('img/'.$value->crop_image) }}"  width="50" height="50" alt="" /></td>
                          
                             <td>
 

@@ -44,7 +44,7 @@
                     <td>{{ $value->created_date }}</td>
                     <td>{{ $value->expired_date }}</td>
                     <td>{{ $value->description }}</td>
-                    <td>{{ $value->product_image }}</td>
+                    <td>  <img src="{{ asset('img/'.$value->product_image) }}"  width="50" height="50" alt="" /></td>
                    
 
                     <!-- we will also add show, edit, and delete buttons -->

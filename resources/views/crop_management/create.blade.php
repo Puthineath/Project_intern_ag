@@ -7,7 +7,7 @@
                 </div>
 
                  <div class="modal-body">
-                            {!! Form::open(array('url' => 'crops')) !!}
+                            {!! Form::open(array('url' => 'crops','enctype'=>'multipart/form-data')) !!}
                         <div class="form-group">
                           
                              {!! Form::label('crop_name', ' Crop Name') !!}
@@ -42,8 +42,10 @@
                                 {!! Form::text('description',null,array('placeholder' => 'Description','class' => 'form-control')) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('crop_image', 'Crop Image') !!}
-                                {!! Form::text('crop_image',null,array('placeholder' => 'Crop Image','class' => 'form-control')) !!}
+                                
+
+                                {!! Form::label ('crop_image','Crop Image')!!}
+                                {!! Form::file('crop_image', null,array('class' => 'form-control')) !!}
                             </div>
 
                             <div class="modal-footer">
