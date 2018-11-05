@@ -48,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	@yield('inventory_show')
 
-
+  @yield('user_index')
 
 	
 </body>

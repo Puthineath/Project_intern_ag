@@ -20,6 +20,9 @@
 									<li>
 										<a href="#"> <i class="fa fa-file-text-o" aria-hidden="true"></i>Resource  <i class="fa fa-angle-down" aria-hidden="true"></i></a> 
 										<ul class="gn-submenu">
+											 @if (!Auth::guest() && Auth::user()->roles==="Admin")
+											<li class="mini_list_agile"><a href=" {{ route('user.index') }} "><i class="fa fa-caret-right" aria-hidden="true"></i> User management </a></li>
+											@endif
 											<li class="mini_list_agile"><a href=" {{ route('employee.index') }} "><i class="fa fa-caret-right" aria-hidden="true"></i> HR management </a></li>
 											<li class="mini_list_w3"><a href="{{ route('inventory.index') }}"><i class="fa fa-caret-right" aria-hidden="true"></i> Inventory Management</a></li>
 										</ul>

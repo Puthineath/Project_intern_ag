@@ -19,6 +19,9 @@ Route::get('/signup', function () {
     return view('login page.signup');
 })->name('signup');
 
+Route::get('/404', function () {
+    return view('404page');
+})->name('404');
 
 
 // Route::get('master', function () {
@@ -48,3 +51,10 @@ Route::post('/inventory/search', 'InventoryController@search')->name('searchInve
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//user view 
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('user/show','UserController@index')->name('user.index');
+Route::post('user/update/{id}','UserController@update')->name('user.update');
+Route::DELETE('user/destroy/{id}','UserController@destroy')->name('user.destroy');
+});
