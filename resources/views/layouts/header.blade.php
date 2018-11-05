@@ -38,12 +38,26 @@
 									<li class="page">
 										<a href="#"><i class="fa fa-files-o" aria-hidden="true"></i> Pages <i class="fa fa-angle-down" aria-hidden="true"></i></a>
 											 <ul class="gn-submenu">
-							
-										  <li class="mini_list_agile"> <a href="signin.html"> <i class="fa fa-caret-right" aria-hidden="true"></i> Sign In</a></li>
-										   <li class="mini_list_w3"><a href="signup.html"> <i class="fa fa-caret-right" aria-hidden="true"></i> Sign Up</a></li>
-										   <li class="mini_list_agile error"><a href="404.html"> <i class="fa fa-caret-right" aria-hidden="true"></i> Error 404 </a></li>
-		
-											<li class="mini_list_w3_line"><a href="calendar.html"> <i class="fa fa-caret-right" aria-hidden="true"></i> Calendar</a></li>
+										 
+										  @guest
+										  <li class="mini_list_agile"> <a href="{{route('signin')}}"> 
+										  <i class="fa fa-caret-right" aria-hidden="true"></i> Sign In</a></li>
+										   <li class="mini_list_w3"><a href="{{route('signup')}}"> 
+										   <i class="fa fa-caret-right" aria-hidden="true"></i> Sign Up</a></li>
+
+										    @else
+										    <li> <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+										<i class="fa fa-caret-right" aria-hidden="true"></i>
+                                        {{ __('Logout') }}
+                                    </a></li>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+										    @endguest
 										</ul>
 									</li>
 									{{-- <li>

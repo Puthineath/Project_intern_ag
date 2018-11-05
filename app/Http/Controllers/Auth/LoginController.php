@@ -27,18 +27,22 @@ class LoginController extends Controller
      */
 
 
-     // public function authenticate(Request $request)
-    
-     //    {
+     protected function authenticated(Request $request){
 
-     //            if(Auth::user()->roles=="Customer"){
-     //            return redirect()->route('Crops.index');
-     //            }
-     //        else if(Auth::user()->roles=="Admin"){
-     //             return redirect()->route('home_page');
-     //             }   
-     //    }
-     protected $redirectTo='/layouts/home_page';
+        if(Auth::user()->roles==="Customer"){
+            return redirect()->route('crops.index');
+        }
+
+        else if(Auth::user()->roles==="Admin"){
+                
+            return redirect()->route('home_page');
+
+        }else if(Auth::user()->roles==="Farmer"){
+                 
+            return redirect()->route('inventory.index');
+        }   
+    }
+     // protected $redirectTo='/';
     /**
      * Create a new controller instance.
      *
