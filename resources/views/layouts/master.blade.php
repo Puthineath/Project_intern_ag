@@ -50,6 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
   @yield('user_index')
 
+  @yield('user_profile')
 	
 </body>
  

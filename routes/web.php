@@ -30,12 +30,15 @@ Route::get('/404', function () {
 Route::get('/', function () {
     return view('layouts.home_page');
 })->name('home_page');
+
+//farmer view and admin view 
+Route::group(['middleware' => 'admin'], function () {
 Route::resource('crops', 'CropController');
 
 Route::resource('employee','EmployeeController');
 
 Route::resource('inventory', 'InventoryController');
-
+});
 
 Auth::routes();
 
@@ -57,4 +60,16 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('user/show','UserController@index')->name('user.index');
 Route::post('user/update/{id}','UserController@update')->name('user.update');
 Route::DELETE('user/destroy/{id}','UserController@destroy')->name('user.destroy');
+});
+
+
+//user profile
+
+Route::group(['middleware' => 'user'], function () {
+	Route::get('/user/profile',function (){
+	return view('admin.profile');
+	})->name('userPro');
+
+	Route::post('profile', 'UserController@update_avatar');
+
 });

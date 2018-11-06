@@ -12,21 +12,45 @@
 						<nav class="gn-menu-wrapper">
 							<div class="gn-scroller scrollbar1">
 								<ul class="gn-menu agile_menu_drop">
-									<li><a href="home_page.blade.php"> <i class="fa fa-tachometer"></i> Dashboard</a></li>
+									@if (!Auth::guest() && Auth::user()->roles==="Admin")
+
 									<li>
 										<a href="{{route('crops.index')}}"><i class="fa fa-cogs" aria-hidden="true"></i> Crop Management <i class="fa fa-angle-down" aria-hidden="true"></i></a> 
 										
 									</li>
+
 									<li>
+
 										<a href="#"> <i class="fa fa-file-text-o" aria-hidden="true"></i>Resource  <i class="fa fa-angle-down" aria-hidden="true"></i></a> 
 										<ul class="gn-submenu">
-											 @if (!Auth::guest() && Auth::user()->roles==="Admin")
 											<li class="mini_list_agile"><a href=" {{ route('user.index') }} "><i class="fa fa-caret-right" aria-hidden="true"></i> User management </a></li>
-											@endif
 											<li class="mini_list_agile"><a href=" {{ route('employee.index') }} "><i class="fa fa-caret-right" aria-hidden="true"></i> HR management </a></li>
 											<li class="mini_list_w3"><a href="{{ route('inventory.index') }}"><i class="fa fa-caret-right" aria-hidden="true"></i> Inventory Management</a></li>
 										</ul>
 									</li>
+									@elseif(!Auth::guest() && Auth::user()->roles==="Farmer")
+									<li><a href="{{route('userPro')}}"> <i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+									<li>
+										<a href="{{route('crops.index')}}"><i class="fa fa-cogs" aria-hidden="true"></i> Crop Management <i class="fa fa-angle-down" aria-hidden="true"></i></a> 
+										
+									</li>
+
+									<li>
+
+										<a href="#"> <i class="fa fa-file-text-o" aria-hidden="true"></i>Resource  <i class="fa fa-angle-down" aria-hidden="true"></i></a> 
+										<ul class="gn-submenu">
+											<li class="mini_list_agile"><a href=" {{ route('employee.index') }} "><i class="fa fa-caret-right" aria-hidden="true"></i> HR management </a></li>
+											<li class="mini_list_w3"><a href="{{ route('inventory.index') }}"><i class="fa fa-caret-right" aria-hidden="true"></i> Inventory Management</a></li>
+										</ul>
+									</li>
+									@elseif(!Auth::guest() && Auth::user()->roles==="Customer")
+
+										<li><a href="{{route('userPro')}}">"> <i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+										<li><a href="#"> <i class="fa fa-history" aria-hidden="true"></i> History</a></li>
+										<li><a href="#"> <i class="fa fa-first-order" aria-hidden="true"></i> Order Product</a></li>
+									
+									@endif
+
 									{{-- <li><a href="table.html"> <i class="fa fa-table" aria-hidden="true"></i> Tables</a></li>
 									<li><a href="#"><i class="fa fa-list" aria-hidden="true"></i>Short Codes <i class="fa fa-angle-down" aria-hidden="true"> </i></a> 
 									     	<ul class="gn-submenu">
@@ -36,7 +60,7 @@
 										</ul>
 									</li> --}}
 									
-									<li><a href="charts.html"> <i class="fa fa-line-chart" aria-hidden="true"></i> Charts</a></li>
+									{{-- <li><a href="charts.html"> <i class="fa fa-line-chart" aria-hidden="true"></i> Charts</a></li> --}}
 									{{-- <li><a href="maps.html"><i class="fa fa-map-o" aria-hidden="true"></i> Maps</a></li> --}}
 									<li class="page">
 										<a href="#"><i class="fa fa-files-o" aria-hidden="true"></i> Pages <i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -79,16 +103,34 @@
 						<li class="second admin-pic">
 					       <ul class="top_dp_agile">
 										<li class="dropdown profile_details_drop">
-											<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-												<div class="profile_img">	
-													<span class="prfil-img"><img src="images/admin.jpg" alt=""> </span> 
-												</div>	
+
+												@if(!Auth::guest() && (Auth::user()->roles==="Customer" || Auth::user()->roles=="Farmer"))
+												<a href="{{route('userPro')}}" >
+
+												<div class="profile_img" style="width: 60px">
+
+													<span   class="prfil-img"><img src="/storage/avatars/{{Auth::user()->avatar }}"  height="40px" alt=""> </span> 
+												</div>
+												@elseif(!Auth::guest() && Auth::user()->roles==="Admin" )
+													<a href="#" >
+
+												<div class="profile_img" style="width: 60px">
+
+												<span class="prfil-img"><img src="{{asset('images/download.png')}}"  height="40px" alt=""> 
+												</span>
+												</div>
+
+												@else
+												<a href="{{route('signin')}}" >
+
+												<div class="profile_img" style="width: 60px">
+
+												<span class="prfil-img"><img src="{{asset('images/download.png')}}"  height="40px" alt=""> 
+												</span>
+												</div>
+												@endif	
 											</a>
-											<ul class="dropdown-menu drp-mnu">
-												<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
-												<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
-												<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
-											</ul>
+
 										</li>
 										
 							</ul>
