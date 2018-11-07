@@ -45,7 +45,7 @@
 									</li>
 									@elseif(!Auth::guest() && Auth::user()->roles==="Customer")
 
-										<li><a href="{{route('userPro')}}">"> <i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+										<li><a href="{{route('userPro')}}"> <i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
 										<li><a href="#"> <i class="fa fa-history" aria-hidden="true"></i> History</a></li>
 										<li><a href="#"> <i class="fa fa-first-order" aria-hidden="true"></i> Order Product</a></li>
 									
@@ -99,7 +99,7 @@
 						</nav>
 					</li>
 					<!-- //nav_agile_w3l -->
-					<li class="second logo"><h1><a href="{{route('home_page')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i>Esteem </a></h1></li>
+					<li class="second logo"><h1><a href="{{route('product_index')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i>SmartAg</a></h1></li>
 						<li class="second admin-pic">
 					       <ul class="top_dp_agile">
 										<li class="dropdown profile_details_drop">
@@ -135,7 +135,7 @@
 										
 							</ul>
 					</li>
-					<li class="second top_bell_nav">
+{{-- 					<li class="second top_bell_nav">
 					   <ul class="top_dp_agile ">
 										<li class="dropdown head-dpdn">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-bell-o" aria-hidden="true"></i> <span class="badge blue">4</span></a>
@@ -190,8 +190,8 @@
 										</li>
 										
 							</ul>
-					</li>
-					<li class="second top_bell_nav">
+					</li> --}}
+{{-- 					<li class="second top_bell_nav">
 					   <ul class="top_dp_agile ">
 										<li class="dropdown head-dpdn">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="badge blue">3</span></a>
@@ -237,8 +237,8 @@
 										</li>
 										
 							</ul>
-					</li>
-					<li class="second top_bell_nav">
+					</li> --}}
+{{-- 					<li class="second top_bell_nav">
 					   <ul class="top_dp_agile ">
 					       <li class="dropdown head-dpdn">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue">9</span></a>
@@ -292,18 +292,18 @@
 											</ul>
 										</li>	
 									</ul>
-					</li>
+					</li> --}}
 
 					
 
-					<li class="second w3l_search">
+{{-- 					<li class="second w3l_search">
 					 
 							<form action="#" method="post">
 								<input type="search" name="search" placeholder="Search here..." required="">
 								<button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 							</form>
 						
-					</li>
+					</li> --}}
 					<li class="second full-screen">
 						<section class="full-top">
 							<button id="toggle"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>	

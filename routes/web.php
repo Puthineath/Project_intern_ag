@@ -27,17 +27,19 @@ Route::get('/404', function () {
 // Route::get('master', function () {
 //     return view('master');
 // });
-Route::get('/', function () {
-    return view('layouts.home_page');
-})->name('home_page');
+
 
 //farmer view and admin view 
-Route::group(['middleware' => 'admin'], function () {
+Route::group(['middleware' => 'farmer'], function () {
 Route::resource('crops', 'CropController');
 
 Route::resource('employee','EmployeeController');
 
 Route::resource('inventory', 'InventoryController');
+
+Route::get('/homepage', function () {
+    return view('layouts.home_page');
+ })->name('home_page');
 });
 
 Auth::routes();
@@ -54,6 +56,12 @@ Route::post('/inventory/search', 'InventoryController@search')->name('searchInve
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//product view 
+Route::resource('product','ProductController');
+Route::get('/', 'ProductController@index')->name('product_index');
+
+
 
 //user view 
 Route::group(['middleware' => 'admin'], function () {

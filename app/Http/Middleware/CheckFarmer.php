@@ -16,7 +16,7 @@ class CheckFarmer
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  (Auth::user()->roles == "Farmer" || Auth::user()->roles == "Admin") {
+        if (Auth::user() &&  (Auth::user()->roles == "Farmer" || Auth::user()->roles == "Admin")) {
             return $next($request);
         }
              return redirect('/404');
